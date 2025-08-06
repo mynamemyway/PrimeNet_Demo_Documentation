@@ -152,6 +152,7 @@ PrimeNetworking_backend/
 #### 1. Основные пользователи (могут входить в систему)
 
 Эти сущности являются полноценными пользователями приложения. Для входа в систему от их имени используйте отладочный эндпоинт `GET /auth/get-debug-token`, подставляя соответствующий `telegram_id`.
+Обратите внимание, что все пути API начинаются с префикса `/api`.
 
 -   **`Neo`**
     -   **ID для входа:** `telegram_id=1`
@@ -203,11 +204,11 @@ PrimeNetworking_backend/
 
 #### 1.1. Получение JWT-токена (симуляция входа)
 
--   **Эндпоинт:** `GET /auth/get-debug-token`
+-   **Эндпоинт:** `GET /api/auth/get-debug-token`
 -   **Описание:** Создает тестового пользователя (если его нет) и возвращает JWT-токен для него.
 -   **Действия:**
     1.  В Swagger UI разверните секцию `Аутентификация`.
-    2.  Найдите эндпоинт `GET /auth/get-debug-token`.
+    2.  Найдите эндпоинт `GET /api/auth/get-debug-token`.
     3.  Нажмите "Try it out". Можете оставить `telegram_id` по умолчанию (`1`).
     4.  Нажмите "Execute".
 -   **Ожидаемый результат:**
@@ -225,9 +226,9 @@ PrimeNetworking_backend/
 
 #### 1.3. Проверка профиля
 
--   **Эндпоинт:** `GET /persons/me`
+-   **Эндпоинт:** `GET /api/persons/me`
 -   **Действия:**
-    1.  В секции `Профиль` найдите `GET /persons/me`.
+    1.  В секции `Профиль` найдите `GET /api/persons/me`.
     2.  Нажмите "Try it out", затем "Execute".
 -   **Ожидаемый результат:**
     -   `Code 200 OK`.
@@ -237,9 +238,9 @@ PrimeNetworking_backend/
 
 #### 2.1. Создание шаблона кастомного поля
 
--   **Эндпоинт:** `POST /custom-fields/`
+-   **Эндпоинт:** `POST /api/custom-fields/`
 -   **Действия:**
-    1.  В секции `Пользовательские поля (Шаблоны)` найдите `POST /custom-fields/`.
+    1.  В секции `Пользовательские поля (Шаблоны)` найдите `POST /api/custom-fields/`.
     2.  Нажмите "Try it out". Введите данные для поля, например:
         ```json
         {
@@ -252,9 +253,9 @@ PrimeNetworking_backend/
 
 #### 2.2. Создание нового контакта
 
--   **Эндпоинт:** `POST /contacts/`
+-   **Эндпоинт:** `POST /api/contacts/`
 -   **Действия:**
-    1.  В секции `Контакты` найдите `POST /contacts/`.
+    1.  В секции `Контакты` найдите `POST /api/contacts/`.
     2.  Нажмите "Try it out". Введите данные контакта:
         ```json
         {
@@ -267,9 +268,9 @@ PrimeNetworking_backend/
 
 #### 2.3. Добавление значения кастомного поля к контакту
 
--   **Эндпоинт:** `POST /contacts/{contact_id}/custom_field_values/`
+-   **Эндпоинт:** `POST /api/contacts/{contact_id}/custom_field_values/`
 -   **Действия:**
-    1.  Найдите `POST /contacts/{contact_id}/custom_field_values/`.
+    1.  Найдите `POST /api/contacts/{contact_id}/custom_field_values/`.
     2.  Нажмите "Try it out". Введите `contact_id` из шага 2.2.
     3.  В "Request body" укажите `field_id` (из шага 2.1) и значение:
         ```json
@@ -285,9 +286,9 @@ PrimeNetworking_backend/
 
 #### 3.1. Запуск AI-анализа
 
--   **Эндпоинт:** `POST /contacts/{contact_id}/parse-social-media`
+-   **Эндпоинт:** `POST /api/contacts/{contact_id}/parse-social-media`
 -   **Действия:**
-    1.  Найдите `POST /contacts/{contact_id}/parse-social-media`.
+    1.  Найдите `POST /api/contacts/{contact_id}/parse-social-media`.
     2.  Нажмите "Try it out". Введите `contact_id` вашего контакта.
     3.  В "Request body" введите URL для анализа:
         ```json
@@ -300,16 +301,16 @@ PrimeNetworking_backend/
 
 #### 3.2. Получение AI-предложений
 
--   **Эндпоинт:** `GET /contacts/{contact_id}/suggestions`
+-   **Эндпоинт:** `GET /api/contacts/{contact_id}/suggestions`
 -   **Действия:**
     1.  Подождите 20-30 секунд.
-    2.  Найдите `GET /contacts/{contact_id}/suggestions`.
+    2.  Найдите `GET /api/contacts/{contact_id}/suggestions`.
     3.  Нажмите "Try it out", введите `contact_id` и нажмите "Execute".
 -   **Ожидаемый результат:** `Code 200 OK`. В ответе будет список предложений. **Запомните `id`** одного из предложений.
 
 #### 3.3. Предпросмотр результата слияния
 
--   **Эндпоинт:** `GET /contacts/{contact_id}/suggestions/{suggestion_id}/preview`
+-   **Эндпоинт:** `GET /api/contacts/{contact_id}/suggestions/{suggestion_id}/preview`
 -   **Действия:**
     1.  Найдите `GET .../preview`.
     2.  Нажмите "Try it out". Введите `contact_id` и `suggestion_id`.
@@ -318,7 +319,7 @@ PrimeNetworking_backend/
 
 #### 3.4. Подтверждение и сохранение
 
--   **Эндпоинт:** `POST /contacts/{contact_id}/suggestions/{suggestion_id}/confirm`
+-   **Эндпоинт:** `POST /api/contacts/{contact_id}/suggestions/{suggestion_id}/confirm`
 -   **Действия:**
     1.  Найдите `POST .../confirm`.
     2.  Нажмите "Try it out". Введите `contact_id` и `suggestion_id`.
