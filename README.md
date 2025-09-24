@@ -1,4 +1,4 @@
-# Prime Networking Backend 🚀
+# PrimeNetworking Backend 🚀
 
 <p align="left">
   <img src="https://img.shields.io/badge/Status-Ready_for_QA-blue" alt="Status">
@@ -6,7 +6,7 @@
   <img src="https://img.shields.io/badge/Build-Passing-brightgreen" alt="Build">
 </p>
 
-Это бэкенд-часть проекта **Prime Networking**,  
+Это бэкенд-часть проекта **PrimeNetworking**,  
 Telegram Mini App для управления контактами с функциями AI.  
 Проект готов к MVP, развитие и поддержка сервиса продолжается.  
 [Документация Swagger UI](https://primenetworking-backend-f.onrender.com/docs#)
